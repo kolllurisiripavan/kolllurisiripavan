@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Forecasting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            background: #007BFF;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        section {
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        canvas {
+            width: 100%;  /* Adjust width to 100% */
+            max-width: 800px;  /* Increase maximum width */
+            margin: 20px auto;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<header>
+    <h1>Data Forecasting</h1>
+</header>
+
+<section>
+    <h2>Climate Conditions</h2>
+    <p>
+        This section demonstrates climate condition forecasting using sample data for temperature, humidity, and precipitation.
+    </p>
+    <canvas id="climateChart"></canvas>
+
+    <a href="home.html" class="back-button">Back</a>
+</section>
+
+<script>
+    // Sample data for demonstration
+    const dates = ['2022-01-01', '2022-01-02', '2022-01-03', '2022-01-04', '2022-01-05'];
+
+    // Climate Condition Data
+    const temperature = [15, 16, 15, 14, 13]; // Actual temperature values
+    const humidity = [70, 65, 75, 80, 78]; // Actual humidity values
+    const precipitation = [5, 10, 0, 2, 1]; // Actual precipitation values
+
+    // Create Climate Chart
+    const ctxClimate = document.getElementById('climateChart').getContext('2d');
+    const climateChart = new Chart(ctxClimate, {
+        type: 'line',
+        data: {
+            labels: dates,
+            datasets: [{
+                label: 'Temperature (°C)',
+                data: temperature,
+                borderColor: 'rgba(255, 99, 132, 1)',
+                fill: false,
+                yAxisID: 'y1'
+            }, {
+                label: 'Humidity (%)',
+                data: humidity,
+                borderColor: 'rgba(75, 192, 192, 1)',
+                fill: false,
+                yAxisID: 'y2'
+            }, {
+                label: 'Precipitation (mm)',
+                data: precipitation,
+                borderColor: 'rgba(54, 162, 235, 1)',
+                fill: false,
+                yAxisID: 'y3'
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Date'
+                    }
+                },
+                y1: {
+                    title: {
+                        display: true,
+                        text: 'Temperature (°C)'
+                    },
+                    position: 'left'
+                },
+                y2: {
+                    title: {
+                        display: true,
+                        text: 'Humidity (%)'
+                    },
+                    position: 'right',
+                    grid: {
+                        drawOnChartArea: false
+                    }
+                },
+                y3: {
+                    title: {
+                        display: true,
+                        text: 'Precipitation (mm)'
+                    },
+                    position: 'right',
+                    grid: {
+                        drawOnChartArea: false
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'top'
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return context.dataset.label + ': (' + context.parsed.x + ', ' + context.parsed.y + ')';
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

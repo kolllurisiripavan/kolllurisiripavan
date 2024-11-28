@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Consumption and Prediction</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            color: #444;
+        }
+
+        header {
+            background: linear-gradient(90deg, #007BFF, #0056b3);
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 1.8em;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Sidebar Navigation */
+        nav {
+            width: 220px;
+            background: #333;
+            color: white;
+            padding: 20px;
+            position: fixed;
+            height: 100vh;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav h2 {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+
+        nav a {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            text-decoration: none;
+            color: white;
+            font-size: 1em;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        nav a:hover {
+            background: #555;
+            transform: scale(1.05);
+        }
+
+        /* Main Content */
+        main {
+            margin-left: 240px;
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .column {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            color: #007BFF;
+            margin-bottom: 15px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        form {
+            margin-top: 15px;
+        }
+
+        form input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        form input[type="submit"] {
+            background: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        form input[type="submit"]:hover {
+            background: #0056b3;
+        }
+
+        #prediction-result {
+            margin-top: 15px;
+            font-size: 1.1em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                position: static;
+                width: 100%;
+                height: auto;
+                box-shadow: none;
+            }
+
+            main {
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    Energy Consumption and Prediction
+</header>
+
+<nav>
+    <h2>Sections</h2>
+    <a href="datacleaning.html">Data Cleaning</a>
+    <a href="data2.html">Data Visualization</a>
+    <a href="data3.html">Model Analysis</a>
+    <a href="data4.html">Data Forecasting</a>
+</nav>
+
+<main>
+    <div class="column">
+        <section id="data-cleaning">
+            <h2>Data Cleaning</h2>
+            <p>
+                This section describes the process of cleaning the energy consumption data to prepare it for analysis.
+            </p>
+            <p>Details about data cleaning methods will be added here.</p>
+	<a href="datacleaning.html">Data Cleaning</a>
+        </section>
+
+        <section id="data-visualization">
+            <h2>Data Visualization</h2>
+            <p>
+                Here you can include visualizations of the energy consumption data using charts or graphs.
+            </p>
+            <p>Visualizations will be added here.</p>
+	<a href="data2.html">Data Visualization</a>
+        </section>
+    </div>
+
+    <div class="column">
+        <section id="model-analysis">
+            <h2>Model Analysis</h2>
+            <p>
+                This section can include details about the models used for prediction, their performance metrics, etc.
+            </p>
+            <p>Model analysis results will be added here.</p>
+	<a href="data3.html">Model Analysis</a>
+        </section>
+
+        <section id="data-forecasting">
+            <h2>Energy Consumption Prediction</h2>
+            <p>
+                Based on historical data, we can predict future energy consumption.
+                Enter your parameters below to get a prediction.
+            </p>
+            		<a href="data4.html">Data Forecasting</a>
+        </section>
+    </div>
+</main>
+
+</body>
+</html>

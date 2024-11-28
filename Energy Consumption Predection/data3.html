@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            background: #007BFF;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        section {
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        canvas {
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<header>
+    <h1>Model Analysis</h1>
+</header>
+
+<section>
+    <h2>Regression Techniques</h2>
+
+    <h3>1. Linear Regression</h3>
+    <p>
+        Linear regression is a method used to model the relationship between a dependent variable and one or more independent variables. The goal is to find the linear equation that best predicts the dependent variable.
+    </p>
+    <canvas id="linearRegressionChart"></canvas>
+    
+    <h3>2. Lasso Regression</h3>
+    <p>
+        Lasso regression is a type of linear regression that uses L1 regularization to prevent overfitting. It adds a penalty equal to the absolute value of the magnitude of coefficients.
+    </p>
+    <canvas id="lassoRegressionChart"></canvas>
+    
+    <h3>3. Ridge Regression</h3>
+    <p>
+        Ridge regression is another type of linear regression that uses L2 regularization to prevent overfitting. It adds a penalty equal to the square of the magnitude of coefficients.
+    </p>
+    <canvas id="ridgeRegressionChart"></canvas>
+
+    <a href="home.html" class="back-button">Back</a>
+</section>
+
+<script>
+    // Sample data for demonstration
+    const X = [1, 2, 3, 4, 5];
+    const y_true = [2, 3, 5, 7, 11];
+
+    // Linear Regression Predictions
+    const linear_predictions = [2.5, 3.5, 5, 6.5, 10];
+
+    // Lasso Regression Predictions
+    const lasso_predictions = [2.2, 3.2, 4.8, 7, 10.5];
+
+    // Ridge Regression Predictions
+    const ridge_predictions = [2.4, 3.4, 5.2, 6.8, 10];
+
+    // Helper function to create chart
+    function createChart(ctx, label1, data1, label2, data2, label3, data3) {
+        return new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: X,
+                datasets: [{
+                    label: label1,
+                    data: data1,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    fill: false
+                }, {
+                    label: label2,
+                    data: data2,
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    fill: false
+                }, {
+                    label: label3,
+                    data: data3,
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'X Values'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Y Values'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': (' + context.parsed.x + ', ' + context.parsed.y + ')';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // Create charts
+    const ctxLinear = document.getElementById('linearRegressionChart').getContext('2d');
+    const ctxLasso = document.getElementById('lassoRegressionChart').getContext('2d');
+    const ctxRidge = document.getElementById('ridgeRegressionChart').getContext('2d');
+
+    createChart(ctxLinear, 'True Values', y_true, 'Linear Regression Predictions', linear_predictions);
+    createChart(ctxLasso, 'True Values', y_true, 'Lasso Regression Predictions', lasso_predictions);
+    createChart(ctxRidge, 'True Values', y_true, 'Ridge Regression Predictions', ridge_predictions);
+</script>
+
+</body>
+</html>
